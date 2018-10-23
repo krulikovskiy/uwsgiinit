@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Запускать под ROOT
 # $1 - название проекта, при повторном создании проекта запускать файл project.sh, а не init.sh
@@ -13,6 +13,7 @@ cd Python-3.6.7
 ./configure --enable-optimizations
 make altinstall
 
+# Удаление установочных файлов Python
 rm -R Python-3.6.7
 rm Python-3.6.7.tar.xz
 
@@ -21,13 +22,12 @@ mkdir -p /etc/uwsgi/sites
 mkdir /var/log/uwsgi
 mkdir /run/uwsgi
 
-
 # Установка сервера
 pip3.6 install uwsgi
 
 # копирование конфига запуска и автозапуск
-cp uwsgi.service /etc/systemd/system/uwsgi.service
+cp uwsgi.service /etc/systemd/system/
 systemctl enable uwsgi
 
 # Создание проекта
-# sh project.sh $1
+bash initproject.sh $1
