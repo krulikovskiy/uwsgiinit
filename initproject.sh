@@ -19,7 +19,5 @@ source virt/bin/activate
 pip install django
 django-admin startproject $1
 cd $1
-python manage.py migrate
-deactive
 service uwsgi restart
 service nginx restart
