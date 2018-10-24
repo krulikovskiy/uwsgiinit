@@ -7,6 +7,7 @@
 mkdir -p /var/www/$1
 mkdir /var/www/$1/assets && chmod 777 -R /var/www/$1/assets
 mkdir /var/www/$1/media && chmod 777 -R /var/www/$1/media
+> restart
 
 cat nginx.conf | sed 's/project_name/'$1'/' > /etc/nginx/sites-available/$1
 ln -s /etc/nginx/sites-available/$1 /etc/nginx/sites-enabled/$1
