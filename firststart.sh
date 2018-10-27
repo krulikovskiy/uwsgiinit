@@ -7,17 +7,22 @@
 apt-get -y update
 apt-get -y install xz-utils gcc libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev nginx
 
-# Установка Python 3.6.7
-wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7.tar.xz
-tar -xpJf Python-3.6.7.tar.xz
-cd Python-3.6.7
-./configure --enable-optimizations
-make altinstall
-
-cd ..
-# Удаление установочных файлов Python
-rm -R Python-3.6.7
-rm Python-3.6.7.tar.xz
+I=`dpkg -s python3.6 | grep "Status" `
+if [ -n "$I" ]
+then
+  apt-get -y python3-dev python3-venv python3-pip
+else
+  # Установка Python 3.6.7
+  wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7.tar.xz
+  tar -xpJf Python-3.6.7.tar.xz
+  cd Python-3.6.7
+  ./configure --enable-optimizations
+  make altinstall
+  cd ..
+  # Удаление установочных файлов Python
+  rm -R Python-3.6.7
+  rm Python-3.6.7.tar.xz
+fi
 
 # Создание всех папок сервера
 mkdir -p /etc/uwsgi/sites
