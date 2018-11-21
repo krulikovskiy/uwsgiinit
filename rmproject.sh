@@ -5,6 +5,7 @@
 
 rm -r /var/www/$1
 rm /etc/nginx/sites-available/$1
+rm /etc/nginx/sites-enabled/$1
 rm /etc/uwsgi/sites/$1.ini
 service uwsgi restart
 service nginx restart
