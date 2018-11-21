@@ -3,11 +3,16 @@
 # Запускать под ROOT
 # $1 - название проекта
 
+if [[ -z "$1" ]]; then
+    echo 'Название проекта - это обязательный атрибут'
+    exit 1
+fi
 
-mkdir -p /var/www/$1
+
+mkdir -p /var/www/$1 && cd 
 mkdir /var/www/$1/assets && chmod 777 -R /var/www/$1/assets
 mkdir /var/www/$1/media && chmod 777 -R /var/www/$1/media
-> restart
+> /var/www/$1/restart
 
 cat nginx.conf | sed 's/project_name/'$1'/' > /etc/nginx/sites-available/$1
 ln -s /etc/nginx/sites-available/$1 /etc/nginx/sites-enabled/$1
