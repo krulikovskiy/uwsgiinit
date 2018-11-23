@@ -6,7 +6,11 @@ bash init.sh my_first_project
 ```
 bash project.sh my_last_project
 ```
-
+# Вставить после BASE_DIR
+```
+ROOT_DIR = os.path.dirname(BASE_DIR)
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+```
 # Вставить вместо STATIC_URL = '/statuc/'
 ```
 MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')
