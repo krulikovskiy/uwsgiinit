@@ -5,7 +5,7 @@ bash init.sh my_first_project
 bash project.sh my_last_project
 
 
-
+# Вставить вместо STATIC_URL = '/statuc/'  
 MEDIA_ROOT = os.path.join(ROOT_DIR, 'media')  
 MEDIA_URL = '/media/'  
   
